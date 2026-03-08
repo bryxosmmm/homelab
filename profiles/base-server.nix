@@ -9,6 +9,7 @@
     ../modules/nixos/packages.nix
     ../modules/nixos/postgresql.nix
     ../modules/nixos/forgejo.nix
+    ../modules/nixos/homepage.nix
     ../modules/nixos/nginx.nix
   ];
 

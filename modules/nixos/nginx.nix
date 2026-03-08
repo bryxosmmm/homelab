@@ -6,6 +6,11 @@
     recommendedGzipSettings = true;
 
     virtualHosts."homelab" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8082/";
+        proxyWebsockets = true;
+      };
+
       locations."= /forge" = {
         return = "302 /forge/";
       };
