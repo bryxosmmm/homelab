@@ -11,7 +11,8 @@
       };
 
       locations."/forge/" = {
-        proxyPass = "http://127.0.0.1:3000";
+        # Keep Forgejo mounted at /forge for clients while forwarding to upstream root.
+        proxyPass = "http://127.0.0.1:3000/";
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header X-Forwarded-Host $host;
