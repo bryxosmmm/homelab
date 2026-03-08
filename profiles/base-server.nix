@@ -9,6 +9,7 @@
     ../modules/nixos/packages.nix
     ../modules/nixos/postgresql.nix
     ../modules/nixos/forgejo.nix
+    ../modules/nixos/nginx.nix
   ];
 
   networking.networkmanager.enable = true;
