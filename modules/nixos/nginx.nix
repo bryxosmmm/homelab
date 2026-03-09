@@ -15,8 +15,6 @@
     };
 
     virtualHosts."forge.extremepeace.space" = {
-      enableACME = true;
-      forceSSL = true;
       extraConfig = ''
         client_max_body_size 512M;
         add_header X-Content-Type-Options "nosniff" always;
@@ -26,6 +24,10 @@
       locations."/" = {
         proxyPass = "http://127.0.0.1:3000/";
         proxyWebsockets = true;
+        extraConfig = ''
+          # TLS terminates on the public-facing Caddy VPS.
+          proxy_set_header X-Forwarded-Proto https;
+        '';
       };
     };
   };

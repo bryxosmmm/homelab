@@ -14,16 +14,7 @@
   ];
 
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
   services.openssh.enable = true;
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "hostmaster@extremepeace.space";
-  };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
