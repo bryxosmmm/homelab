@@ -33,7 +33,7 @@
           {
             Forgejo = {
               description = "Git hosting";
-              href = "http://forge.extremepeace.space/";
+              href = "https://forge.extremepeace.space/";
               icon = "forgejo";
             };
           }
