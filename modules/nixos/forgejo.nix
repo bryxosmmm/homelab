@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, pkgs, ... }:
 {
   services.forgejo = {
     enable = true;
@@ -39,9 +39,8 @@
         COOKIE_SECURE = true;
       };
 
-      # Disable risky features
-      actions.ENABLED = lib.mkForce false; # CI/CD = high risk if public
-      packages.ENABLED = false;
+      actions.ENABLED = lib.mkForce true;
+      packages.ENABLED = true;
 
       # Rate limiting
       rate_limit = {
@@ -54,6 +53,24 @@
         SHOW_FOOTER_VERSION = false;
         SHOW_FOOTER_TEMPLATE_LOAD_TIME = false;
       };
+    };
+  };
+
+  services.gitea-actions-runner = {
+    package = pkgs.forgejo-runner;
+
+    instances.homeserver = {
+      enable = true;
+      name = config.networking.hostName;
+      url = "http://127.0.0.1:${toString config.services.forgejo.settings.server.HTTP_PORT}";
+      labels = [
+        "native:host"
+        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
+        "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:act-24.04"
+      ];
+
+      # The file must contain TOKEN=<runner registration token>.
+      tokenFile = "/var/lib/secrets/forgejo-runner.env";
     };
   };
 }

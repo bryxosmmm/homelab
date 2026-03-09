@@ -8,6 +8,7 @@
     description = "scooby";
     extraGroups = [
       "networkmanager"
+      "podman"
       "wheel"
     ];
   };

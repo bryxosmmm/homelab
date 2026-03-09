@@ -7,6 +7,7 @@
     ../modules/nixos/shell.nix
     ../modules/nixos/users.nix
     ../modules/nixos/packages.nix
+    ../modules/nixos/podman.nix
     ../modules/nixos/postgresql.nix
     ../modules/nixos/forgejo.nix
     ../modules/nixos/homepage.nix
