@@ -9,8 +9,8 @@
     # Hardening settings
     settings = {
       server = {
-        DOMAIN = "homelab";
-        ROOT_URL = "http://homelab/forge/";
+        DOMAIN = "forge.extremepeace.space";
+        ROOT_URL = "http://forge.extremepeace.space/";
         HTTP_ADDR = "127.0.0.1";
         HTTP_PORT = 3000;
         ENABLE_GZIP = true;

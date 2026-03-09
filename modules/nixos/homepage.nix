@@ -33,7 +33,7 @@
           {
             Forgejo = {
               description = "Git hosting";
-              href = "http://homelab/forge/";
+              href = "http://forge.extremepeace.space/";
               icon = "forgejo";
             };
           }
