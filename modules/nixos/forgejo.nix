@@ -1,4 +1,11 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
+let
+  forgejoUrl = "https://forge.extremepeace.space/";
+in
 {
   services.forgejo = {
     enable = true;
@@ -10,7 +17,7 @@
     settings = {
       server = {
         DOMAIN = "forge.extremepeace.space";
-        ROOT_URL = "https://forge.extremepeace.space/";
+        ROOT_URL = forgejoUrl;
         HTTP_ADDR = "127.0.0.1";
         HTTP_PORT = 3000;
         ENABLE_GZIP = true;
@@ -59,18 +66,38 @@
   services.gitea-actions-runner = {
     package = pkgs.forgejo-runner;
 
-    instances.homeserver = {
-      enable = true;
-      name = config.networking.hostName;
-      url = "http://127.0.0.1:${toString config.services.forgejo.settings.server.HTTP_PORT}";
-      labels = [
-        "native:host"
-        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
-        "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:act-24.04"
-      ];
+    instances = {
+      mithrandir = {
+        enable = true;
+        name = "Mithrandir";
+        url = forgejoUrl;
+        labels = [ "mithrandir:native:host" ];
+        hostPackages = with pkgs; [
+          nixFlakes
+          git
+          bash
+          coreutils
+        ];
+        tokenFile = "/var/lib/secrets/nix-base/forgejo-runner.env";
+      };
 
-      # The file must contain TOKEN=<runner registration token>.
-      tokenFile = "/var/lib/secrets/forgejo-runner.env";
+      gwaihir = {
+        enable = true;
+        name = "Gwaihir";
+        url = forgejoUrl;
+        labels = [
+          "gwaihir:native:host"
+          "podman-ubuntu:podman://ghcr.io/catthehacker/ubuntu:act-24.04"
+        ];
+        hostPackages = with pkgs; [
+          nixFlakes
+          git
+          bash
+          coreutils
+          podman
+        ];
+        tokenFile = "/var/lib/secrets/nix-docker/forgejo-runner.env";
+      };
     };
   };
 }
