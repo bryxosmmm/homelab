@@ -71,7 +71,7 @@ in
         enable = true;
         name = "Mithrandir";
         url = forgejoUrl;
-        labels = [ "mithrandir:native:host" ];
+        labels = [ "mithrandir:host" ];
         hostPackages = with pkgs; [
           nix
           git
@@ -86,7 +86,7 @@ in
         name = "Gwaihir";
         url = forgejoUrl;
         labels = [
-          "gwaihir:native:host"
+          "gwaihir:host"
           "podman-ubuntu:podman://ghcr.io/catthehacker/ubuntu:act-24.04"
         ];
         hostPackages = with pkgs; [
