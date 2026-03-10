@@ -87,7 +87,6 @@ in
         url = forgejoUrl;
         labels = [
           "gwaihir:host"
-          "podman-ubuntu:podman://ghcr.io/catthehacker/ubuntu:act-24.04"
         ];
         hostPackages = with pkgs; [
           nix
