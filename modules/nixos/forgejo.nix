@@ -73,7 +73,7 @@ in
         url = forgejoUrl;
         labels = [ "mithrandir:native:host" ];
         hostPackages = with pkgs; [
-          nixFlakes
+          nix
           git
           bash
           coreutils
@@ -90,7 +90,7 @@ in
           "podman-ubuntu:podman://ghcr.io/catthehacker/ubuntu:act-24.04"
         ];
         hostPackages = with pkgs; [
-          nixFlakes
+          nix
           git
           bash
           coreutils
