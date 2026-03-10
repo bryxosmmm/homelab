@@ -93,7 +93,7 @@ in
           git
           bash
           coreutils
-          podman
+          skopeo
         ];
         tokenFile = "/var/lib/secrets/nix-docker/forgejo-runner.env";
       };
