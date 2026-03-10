@@ -77,7 +77,7 @@ in
           git
           bash
           coreutils
-          node
+          nodejs_25
         ];
         tokenFile = "/var/lib/secrets/nix-base/forgejo-runner.env";
       };
@@ -95,7 +95,7 @@ in
           bash
           coreutils
           skopeo
-          node
+          nodejs_25
         ];
         tokenFile = "/var/lib/secrets/nix-docker/forgejo-runner.env";
       };
