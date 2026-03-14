@@ -10,6 +10,7 @@
     git
     coreutils
     nushell
+    podman-compose
   ];
 
   environment.variables = {
