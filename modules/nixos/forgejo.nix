@@ -12,6 +12,8 @@ in
 
     database.type = "postgres";
     database.name = "forgejo";
+    database.open_conns = 70;
+    database.idle_conns = 20;
 
     # Hardening settings
     settings = {
